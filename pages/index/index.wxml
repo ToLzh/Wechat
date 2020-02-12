@@ -1,0 +1,17 @@
+<view class="main">
+  <view class="content" style="width:{{canvas.width}}rpx;height:{{canvas.hegiht}}rpx">
+    <image wx:for="{{oriPic.img}}" wx:key="index" 
+      src="{{item.src}}" mode="widthFix" class="oridem" style="width:{{oriPic.width}}rpx;filter: {{item.flag?0:'grayscale(100%)'}}"
+      bindtouchcansce="checkPic"></image>
+  </view>
+
+  <view class="bottom" style="width:{{bottomVas.width}}px;height:{{bottomVas.height}}px">
+   <image wx:for="{{newImg}}" wx:key="index" 
+      mode="widthFix" src="{{item.src}}" 
+      style="width:{{item.flag?oriPic.width:width}}{{item.flag?'rpx':'px'}}; position:absolute;top:{{item.Y==0?(bottomVas.height-width)/2:item.Y}}px; left:{{item.X==0?dif*(index+1)+width*index:item.X}}px; z-index:{{item.flag?2:1}}"
+      data-ent="{{item}}"
+      bindtouchstart="handleStart"
+      bindtouchmove="handleMove"></image>
+      </view>
+
+</view>
